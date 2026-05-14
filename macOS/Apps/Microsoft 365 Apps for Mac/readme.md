@@ -29,7 +29,7 @@ These sample scripts provide examples of how to use [Intune Shell Scripting](htt
 
 From Oct 2023 Microsoft 365 Apps for Mac includes a shim for Defender. If you are not using Defender in your environment, you can prevent this from being installed by using this preference file with InstallDefender to to false. This changed was notified via [MC661225](https://admin.microsoft.com/AdminPortal/Home?ref=MessageCenter/:/messages/MC661225).
 
-**Information**: Click [here](https://macadmins.software/shim/) to learn more about the Defender Shim and how it works.
+**Information**: Click [here](https://macadmins.software/shim/) to learn more about the Defender Shim and how it works. (Caution this link doesn't work anymore)
 
 ![Alt text](image-1.png)
 
