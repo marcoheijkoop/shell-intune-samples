@@ -1,4 +1,6 @@
 #!/bin/bash
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
 #set -x
 
 ############################################################################################
@@ -7,7 +9,6 @@
 ##
 ###########################################
 
-## Copyright (c) 2020 Microsoft Corp. All rights reserved.
 ## Scripts are not supported under any Microsoft standard support program or service. The scripts are provided AS IS without warranty of any kind.
 ## Microsoft disclaims all implied warranties including, without limitation, any implied warranties of merchantability or of fitness for a
 ## particular purpose. The entire risk arising out of the use or performance of the scripts and documentation remains with you. In no event shall
@@ -98,12 +99,18 @@ if [ "$tz" = "$currentTZ" ]; then
     updateSplashScreen success "TimeZone is already set to $tz"
 else
     echo "$(date) | TimeZone is currently set to $currentTZ. Setting to $tz"
-    sudo systemsetup -settimezone $tz
-    $currentTZ=$(sudo systemsetup -gettimezone | awk '{print $3}' | xargs)
+    sudo systemsetup -settimezone "$tz"
+    currentTZ=$(sudo systemsetup -gettimezone | awk '{print $3}' | xargs)
     if [ "$tz" != "$currentTZ" ]; then
 
-      echo "$(date) | Failed to change $currentTZ to $tz"
-      updateSplashScreen fail "Failed to change $currentTZ to $tz"
+      echo "$(date) | Failed to change timezone to $tz. Current timezone is still $currentTZ"
+      updateSplashScreen fail "Failed to change timezone to $tz"
+      exit 1
+
+    else
+
+      echo "$(date) | TimeZone successfully changed to $tz"
+      updateSplashScreen success "TimeZone successfully changed to $tz"
 
     fi
 fi
